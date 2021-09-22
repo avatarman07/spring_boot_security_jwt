@@ -1,30 +1,23 @@
 package com.bezkoder.springjwt.model;
 
 import java.time.Instant;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity(name = "refreshtoken")
+
+@Document(collection = "refreshtoken")
 @Data
 public class RefreshToken {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
-  @OneToOne
-  @JoinColumn(name = "user_id", referencedColumnName = "id")
+  @DBRef
   private User user;
 
-  @Column(nullable = false, unique = true)
   private String token;
 
-  @Column(nullable = false)
   private Instant expiryDate;
 
 }

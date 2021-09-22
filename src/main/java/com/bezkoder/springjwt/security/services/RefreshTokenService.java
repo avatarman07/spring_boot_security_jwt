@@ -3,7 +3,6 @@ package com.bezkoder.springjwt.security.services;
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -11,6 +10,7 @@ import com.bezkoder.springjwt.exception.TokenRefreshException;
 import com.bezkoder.springjwt.model.RefreshToken;
 import com.bezkoder.springjwt.repository.RefreshTokenRepository;
 import com.bezkoder.springjwt.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
